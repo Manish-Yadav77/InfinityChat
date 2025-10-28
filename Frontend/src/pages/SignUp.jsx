@@ -53,12 +53,12 @@ export default function SignUp() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 flex items-center justify-center px-4 sm:px-6">
+    <div className="min-h-screen bg-linear-to-b from-slate-950 via-slate-900 to-slate-950 flex items-center justify-center px-4 sm:px-6">
       <div className="w-full max-w-md backdrop-blur-xl bg-slate-900/60 border border-slate-800 rounded-2xl p-8 shadow-[0_0_40px_-10px_rgba(139,92,246,0.4)] transition-all duration-300">
 
         {/* Header */}
         <div className="text-center mb-8">
-          <h1 className="text-4xl font-bold text-gray-100 mb-3 bg-gradient-to-r from-purple-400 to-cyan-300 bg-clip-text text-transparent">
+          <h1 className="text-4xl font-bold  mb-3 bg-linear-to-r from-purple-400 to-cyan-300 bg-clip-text text-transparent">
             Create Your Account 🚀
           </h1>
           <p className="text-gray-400 text-sm sm:text-base">
@@ -155,7 +155,7 @@ export default function SignUp() {
           <button
             type="submit"
             disabled={loading}
-            className="w-full py-2.5 bg-gradient-to-r from-purple-600 to-cyan-600 
+            className="w-full py-2.5 bg-linear-to-r from-purple-600 to-cyan-600 
                       hover:from-purple-500 hover:to-cyan-500 disabled:opacity-60
                       text-white font-semibold rounded-lg transition-all flex items-center 
                       justify-center gap-2 shadow-[0_0_10px_rgba(139,92,246,0.4)] hover:shadow-[0_0_15px_rgba(139,92,246,0.6)]"
@@ -179,7 +179,7 @@ export default function SignUp() {
         {/* Footer */}
         <p className="text-center text-gray-500 text-xs mt-6">
           © {new Date().getFullYear()} InfinityChat · Created by{' '}
-          <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-cyan-300 font-semibold">
+          <span className="text-transparent bg-clip-text bg-linear-to-r from-purple-400 to-cyan-300 font-semibold">
             Manish Kumar Yadav
           </span>
         </p>
