@@ -76,13 +76,13 @@ export default function FileUpload({ onFilesSelected, selectedFiles }) {
               <div className="flex items-center gap-2 flex-1 min-w-0">
                 <span>📎</span>
                 <span className="truncate">{file.name}</span>
-                <span className="text-xs text-gray-500 flex-shrink-0">
+                <span className="text-xs text-gray-500 shrink-0">
                   ({(file.size / 1024 / 1024).toFixed(1)}MB)
                 </span>
               </div>
               <button
                 onClick={() => removeFile(idx)}
-                className="text-gray-500 hover:text-red-400 transition-colors flex-shrink-0"
+                className="text-gray-500 hover:text-red-400 transition-colors shrink-0"
               >
                 <X size={16} />
               </button>

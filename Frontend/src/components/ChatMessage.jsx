@@ -14,8 +14,8 @@ export default function ChatMessage({ message, isUser }) {
   if (isUser) {
     return (
       <div className="flex justify-end px-4 py-3 animate-fade-in">
-        <div className="max-w-full sm:max-w-[80%] md:max-w-[70%] lg:max-w-[60%] xl:max-w-[50%] px-4 py-3 rounded-xl bg-gradient-to-r from-blue-600 to-blue-700 text-white shadow-lg">
-          <p className="text-sm sm:text-base leading-relaxed whitespace-pre-wrap break-words">{message.content}</p>
+        <div className="max-w-full sm:max-w-[80%] md:max-w-[70%] lg:max-w-[60%] xl:max-w-[50%] px-4 py-3 rounded-xl bg-linear-to-r from-blue-600 to-blue-700 text-white shadow-lg">
+          <p className="text-sm sm:text-base leading-relaxed whitespace-pre-wrap wrap-break-word">{message.content}</p>
           {message.files && message.files.length > 0 && (
             <div className="mt-3 space-y-2 border-t border-blue-500 pt-3">
               {message.files.map((file, idx) => (
@@ -35,7 +35,7 @@ export default function ChatMessage({ message, isUser }) {
     <div className="flex justify-start px-4 py-3 animate-fade-in hover:bg-slate-900/30 transition-colors group">
       <div className="max-w-full sm:max-w-[80%] md:max-w-[70%] lg:max-w-[60%] xl:max-w-[50%]">
         <div className="px-4 py-3 rounded-xl bg-slate-800 text-gray-50 relative shadow-md hover:shadow-lg transition-all">
-          <div className="text-sm sm:text-base leading-relaxed whitespace-pre-wrap break-words font-normal">
+          <div className="text-sm sm:text-base leading-relaxed whitespace-pre-wrap wrap-break-word font-normal">
             {message.content}
           </div>
 

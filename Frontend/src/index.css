@@ -1025,7 +1025,7 @@ a:hover {
 
 .glass-effect {
   background: rgba(var(--color-charcoal-700-rgb, 31, 33, 33), 0.8);
-  backdrop-filter: blur(10px);
+  /* backdrop-filter: blur(10px); */
   border: 1px solid rgba(var(--color-gray-400-rgb), 0.1);
   border-radius: var(--radius-lg);
 }

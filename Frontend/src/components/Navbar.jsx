@@ -23,7 +23,7 @@ export default function Navbar({ onNewChat, openSettings, currentChatTitle }) {
   }, []);
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-gradient-to-b from-slate-900 to-slate-900/80 backdrop-blur-md border-b border-slate-700/50 shadow-lg">
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-linear-to-b from-slate-900 to-slate-900/80 backdrop-blur-md border-b border-slate-700/50 shadow-lg">
       <div className="max-w-full mx-auto px-4 sm:px-6 py-3 sm:py-4 flex items-center justify-between h-16">
         
         {/* Left - Logo / Chat Title */}
@@ -47,14 +47,14 @@ export default function Navbar({ onNewChat, openSettings, currentChatTitle }) {
         {/* Center - Logo (Mobile) */}
         {!isDesktop && (
           <div className="flex items-center gap-2">
-            <div className="w-8 h-8 rounded-lg bg-gradient-to-r from-blue-600 to-cyan-600 flex items-center justify-center">
+            <div className="w-8 h-8 rounded-lg bg-linear-to-r from-blue-600 to-cyan-600 flex items-center justify-center">
               <span className="text-sm font-bold">✨</span>
             </div>
           </div>
         )}
 
         {/* Right - User / Menu */}
-        <div className="flex items-center gap-2 sm:gap-3 flex-shrink-0">
+        <div className="flex items-center gap-2 sm:gap-3 shrink-0">
           {isDesktop && (
             <div className="flex items-center gap-2">
               <img

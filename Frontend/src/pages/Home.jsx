@@ -188,7 +188,7 @@ export default function Home() {
 
   if (!user) {
     return (
-      <div className="flex items-center justify-center h-screen bg-gradient-to-br from-slate-900 to-slate-800">
+      <div className="flex items-center justify-center h-screen bg-linear-to-br from-slate-900 to-slate-800">
         <div className="text-center">
           <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-blue-500 mx-auto mb-4"></div>
           <p className="text-gray-300">Loading...</p>
@@ -198,7 +198,7 @@ export default function Home() {
   }
 
   return (
-    <div className="flex h-screen bg-gradient-to-br from-slate-950 to-slate-900 text-white overflow-hidden">
+    <div className="flex h-screen bg-linear-to-br from-slate-950 to-slate-900 text-white overflow-hidden">
       
       {/* Sidebar */}
       <Sidebar
@@ -229,11 +229,11 @@ export default function Home() {
               <div className="flex-1 flex items-center justify-center px-4 sm:px-6 py-8">
                 <div className="text-center w-full max-w-2xl">
                   <div className="mb-8">
-                    <div className="w-16 h-16 mx-auto rounded-full bg-gradient-to-r from-blue-600 to-cyan-600 flex items-center justify-center shadow-lg">
+                    <div className="w-16 h-16 mx-auto rounded-full bg-linear-to-r from-blue-600 to-cyan-600 flex items-center justify-center shadow-lg">
                       <span className="text-3xl">✨</span>
                     </div>
                   </div>
-                  <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-3 bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
+                  <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-3 bg-linear-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
                     Welcome, {user?.name}!
                   </h2>
                   <p className="text-gray-400 text-base sm:text-lg mb-10 leading-relaxed">
@@ -295,7 +295,7 @@ export default function Home() {
         </div>
 
         {/* Input Area - Fixed at Bottom */}
-        <div className="flex-shrink-0 bg-gradient-to-t from-slate-950 via-slate-900 to-transparent pt-6 pb-4 px-4 sm:px-6">
+        <div className="shrink-0 bg-linear-to-t from-slate-950 via-slate-900 to-transparent pt-6 pb-4 px-4 sm:px-6">
           <div className="max-w-6xl mx-auto">
             
             {/* File Preview */}
@@ -316,7 +316,7 @@ export default function Home() {
             {/* Message Input Form */}
             <form onSubmit={handleSendMessage} className="flex gap-3">
               {/* File Upload Button */}
-              <div className="flex-shrink-0">
+              <div className="shrink-0">
                 <FileUpload 
                   selectedFiles={selectedFiles}
                   onFilesSelected={setSelectedFiles}
@@ -343,7 +343,7 @@ export default function Home() {
               <button
                 type="submit"
                 disabled={loading || (!inputValue.trim() && selectedFiles.length === 0)}
-                className="flex-shrink-0 px-4 sm:px-6 py-3 sm:py-4 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 
+                className="shrink-0 px-4 sm:px-6 py-3 sm:py-4 bg-linear-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 
                           disabled:from-slate-600 disabled:to-slate-700 disabled:cursor-not-allowed
                           text-white font-semibold rounded-xl transition-all duration-200
                           flex items-center justify-center gap-2 shadow-lg hover:shadow-xl"
@@ -410,7 +410,7 @@ export default function Home() {
                   <label className="block text-sm font-semibold text-gray-300 uppercase tracking-wider">
                     Model
                   </label>
-                  <div className="p-3 rounded-lg bg-gradient-to-r from-blue-600/20 to-cyan-600/20 border border-blue-500/30">
+                  <div className="p-3 rounded-lg bg-linear-to-r from-blue-600/20 to-cyan-600/20 border border-blue-500/30">
                     <p className="text-white font-medium">Gemini 2.5 Flash</p>
                     <p className="text-xs text-gray-400 mt-1">Advanced AI Model</p>
                   </div>
@@ -422,7 +422,7 @@ export default function Home() {
                     logout();
                     navigate('/');
                   }}
-                  className="w-full py-3 bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800
+                  className="w-full py-3 bg-linear-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-800
                             text-white font-semibold rounded-lg transition-all duration-200 shadow-lg"
                 >
                   Logout
@@ -436,7 +436,7 @@ export default function Home() {
       {/* Mobile Sidebar Toggle Button */}
       <button
         onClick={() => setSidebarOpen(!sidebarOpen)}
-        className="fixed bottom-6 right-6 md:hidden p-3 bg-gradient-to-r from-blue-600 to-blue-700 
+        className="fixed bottom-6 right-6 md:hidden p-3 bg-linear-to-r from-blue-600 to-blue-700 
                    hover:from-blue-700 hover:to-blue-800 rounded-full shadow-lg transition-all duration-200
                    z-40 active:scale-95"
       >
