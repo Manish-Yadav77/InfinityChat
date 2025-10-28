@@ -33,7 +33,7 @@ export default function ChatMessage({ message, isUser }) {
 
   return (
     <div className="flex justify-start px-4 py-3 animate-fade-in hover:bg-slate-900/30 transition-colors group">
-      <div className="max-w-full sm:max-w-[80%] md:max-w-[70%] lg:max-w-[60%] xl:max-w-[50%]">
+      <div className="max-w-full ">
         <div className="px-4 py-3 rounded-xl bg-slate-800 text-gray-50 relative shadow-md hover:shadow-lg transition-all">
           <div className="text-sm sm:text-base leading-relaxed whitespace-pre-wrap wrap-break-word font-normal">
             {message.content}

@@ -7,11 +7,11 @@ export default function Sidebar({
   onSelectChat, 
   onNewChat, 
   onDeleteChat,
-  isOpen 
+  isOpen,
+  setSidebarOpen
 }) {
   const [expandedId, setExpandedId] = useState(null);
 
-  // Remove duplicate chats by using Set and unique _id
   const uniqueChats = Array.from(
     new Map(chats.map(chat => [chat._id, chat])).values()
   );
@@ -20,18 +20,18 @@ export default function Sidebar({
     <>
       {/* Sidebar */}
       <div className={`
-        fixed left-0 top-16 bottom-0 w-64 bg-gradient-to-b from-slate-900 to-slate-950 border-r border-slate-700/50
+        fixed left-0 top-16 bottom-0 w-64 bg-linear-to-b from-slate-900 to-slate-950 border-r border-slate-700/50
         transform transition-transform duration-300 z-40
         ${isOpen ? 'translate-x-0' : '-translate-x-full'}
         md:translate-x-0 md:relative md:top-0 md:border-r md:border-slate-700/50
-        overflow-y-auto scrollbar-thin scrollbar-thumb-slate-700 scrollbar-track-slate-900
+        flex flex-col overflow-y-auto scrollbar-thin scrollbar-thumb-slate-700 scrollbar-track-slate-900
         shadow-xl md:shadow-none
       `}>
         
         {/* New Chat Button */}
         <button
           onClick={onNewChat}
-          className="w-[calc(100%-2rem)] mx-4 my-4 px-4 py-3 rounded-xl bg-gradient-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700
+          className="w-[calc(100%-2rem)] mx-4 my-4 px-4 py-3 rounded-xl bg-linear-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700
                      flex items-center justify-center gap-2 transition-all duration-200 font-semibold text-white shadow-lg hover:shadow-xl"
         >
           <Plus size={20} />
@@ -39,7 +39,7 @@ export default function Sidebar({
         </button>
 
         {/* Chat History */}
-        <div className="px-2 space-y-2">
+        <div className="px-2 space-y-2 flex-1 overflow-y-auto">
           <p className="text-xs uppercase text-gray-500 font-semibold px-3 py-3 tracking-wider">Chat History</p>
           
           {uniqueChats.length === 0 ? (
@@ -55,11 +55,14 @@ export default function Sidebar({
                   className={`
                     group relative px-3 py-3 rounded-xl cursor-pointer transition-all duration-200
                     ${currentChatId === chat._id 
-                      ? 'bg-gradient-to-r from-blue-600/30 to-cyan-600/30 text-white border border-blue-500/50 shadow-lg' 
+                      ? 'bg-linear-to-r from-blue-600/30 to-cyan-600/30 text-white border border-blue-500/50 shadow-lg' 
                       : 'hover:bg-slate-800/50 text-gray-300 border border-transparent hover:border-slate-700'
                     }
                   `}
-                  onClick={() => onSelectChat(chat._id)}
+                  onClick={() => {
+                    onSelectChat(chat._id);
+                    if (setSidebarOpen) setSidebarOpen(false); // ✅ Auto close on mobile
+                  }}
                   onMouseEnter={() => setExpandedId(chat._id)}
                   onMouseLeave={() => setExpandedId(null)}
                 >
@@ -87,7 +90,7 @@ export default function Sidebar({
                       }
                     }}
                     className={`
-                      absolute right-2 top-3 p-2 rounded-lg opacity-0 group-hover:opacity-100
+                      absolute right-2 top-3 p-2 rounded-lg opacity-100 md:opacity-0 group-hover:opacity-100
                       transition-all duration-200 bg-red-500/10 hover:bg-red-500/30 text-red-400 hover:text-red-300
                     `}
                     title="Delete chat"
@@ -101,18 +104,18 @@ export default function Sidebar({
         </div>
 
         {/* Footer Info */}
-        <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-slate-950 to-transparent border-t border-slate-700/50">
+        <div className="p-4 bg-linear-to-t from-slate-950 to-transparent border-t border-slate-700/50">
           <p className="text-xs text-gray-500 text-center">
             Conversations are encrypted
           </p>
         </div>
       </div>
 
-      {/* Mobile Sidebar Overlay */}
+      {/* ✅ Mobile Sidebar Overlay */}
       {isOpen && (
         <div
           className="fixed inset-0 bg-black/50 backdrop-blur-sm z-30 md:hidden"
-          onClick={() => {}}
+          onClick={() => setSidebarOpen && setSidebarOpen(false)}
         />
       )}
     </>

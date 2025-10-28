@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { Menu, Send, Loader, Settings, X } from 'lucide-react';
+import { Menu, Send, Loader, Settings, X, Circle } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import { chatAPI } from '../utils/api';
 import Navbar from '../components/Navbar';
@@ -436,11 +436,11 @@ export default function Home() {
       {/* Mobile Sidebar Toggle Button */}
       <button
         onClick={() => setSidebarOpen(!sidebarOpen)}
-        className="fixed bottom-6 right-6 md:hidden p-3 bg-linear-to-r from-blue-600 to-blue-700 
+        className="fixed top-18 -right-6 md:hidden p-3 bg-linear-to-r from-blue-600 to-blue-700 
                    hover:from-blue-700 hover:to-blue-800 rounded-full shadow-lg transition-all duration-200
                    z-40 active:scale-95"
       >
-        <Menu size={24} />
+        <Circle size={24} />
       </button>
     </div>
   );
