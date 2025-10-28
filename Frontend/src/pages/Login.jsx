@@ -1,14 +1,22 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { Mail, Lock, Loader } from 'lucide-react';
 
 export default function Login() {
   const navigate = useNavigate();
-  const { login, error } = useAuth();
+  const { login, error, isAuthenticated, loading: authLoading } = useAuth();
+
   const [formData, setFormData] = useState({ email: '', password: '' });
   const [loading, setLoading] = useState(false);
   const [clientError, setClientError] = useState('');
+
+  // 🔁 Redirect if already logged in
+  useEffect(() => {
+    if (isAuthenticated && !authLoading) {
+      navigate('/home', { replace: true });
+    }
+  }, [isAuthenticated, authLoading, navigate]);
 
   const handleChange = (e) => {
     setFormData({
@@ -33,6 +41,16 @@ export default function Login() {
     }
   };
 
+  if (authLoading) {
+    // Optional: loading screen while checking auth
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-slate-950 text-gray-300">
+        <Loader size={28} className="animate-spin mr-2" />
+        Checking authentication...
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-screen bg-linear-to-b from-slate-950 via-slate-900 to-slate-950 flex items-center justify-center px-4 sm:px-6">
       <div className="w-full max-w-md backdrop-blur-xl bg-slate-900/60 border border-slate-800 rounded-2xl p-8 shadow-[0_0_40px_-10px_rgba(99,102,241,0.5)] transition-all duration-300">
@@ -49,8 +67,6 @@ export default function Login() {
 
         {/* Form */}
         <form onSubmit={handleSubmit} className="space-y-5">
-
-          {/* Error Message */}
           {(clientError || error) && (
             <div className="p-3 bg-red-500/10 border border-red-500/30 text-red-400 rounded-lg text-sm text-center">
               {clientError || error}
@@ -95,7 +111,7 @@ export default function Login() {
             </div>
           </div>
 
-          {/* Submit Button */}
+          {/* Submit */}
           <button
             type="submit"
             disabled={loading}
@@ -109,7 +125,7 @@ export default function Login() {
           </button>
         </form>
 
-        {/* Sign Up Link */}
+        {/* Sign Up */}
         <p className="text-center text-gray-400 mt-8 text-sm">
           Don’t have an account?{' '}
           <Link
@@ -120,7 +136,7 @@ export default function Login() {
           </Link>
         </p>
 
-        {/* Footer Note */}
+        {/* Footer */}
         <p className="text-center text-gray-500 text-xs mt-6">
           © {new Date().getFullYear()} InfinityChat · Designed by{' '}
           <span className="text-transparent bg-clip-text bg-linear-to-r from-purple-400 to-cyan-300 font-semibold">
