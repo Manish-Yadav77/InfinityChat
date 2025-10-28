@@ -101,12 +101,28 @@ export default function LandingPage() {
       </section>
 
       {/* Footer */}
-      <footer className="mt-auto border-t border-slate-800 py-8 text-center text-gray-500 text-sm">
-        <p>
-          © {new Date().getFullYear()} InfinityChat — Built with 💙 using
-          React.js and Google AI Studio.
+      <footer className="mt-auto border-t border-slate-800 py-8 text-center text-gray-400 text-sm relative overflow-hidden">
+        {/* Gradient Glow */}
+        <div className="absolute inset-0 bg-linear-to-r from-purple-600/10 via-blue-500/5 to-cyan-400/10 blur-3xl opacity-40 pointer-events-none"></div>
+
+        <p className="relative z-10 mb-2 text-gray-300">
+          © {new Date().getFullYear()} <span className="font-semibold text-transparent bg-clip-text bg-linear-to-r from-purple-400 to-cyan-300">InfinityChat</span> —
+          Built with 💙 using React.js & Google AI Studio.
+        </p>
+
+        <p className="relative z-10 text-gray-500 mt-1">
+          Crafted by{" "}
+          <a
+            href="https://www.linkedin.com/in/manish-yadav-fullstack-mern/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="font-semibold text-transparent bg-clip-text bg-linear-to-r from-purple-400 to-cyan-300 hover:brightness-125 transition-all"
+          >
+            Manish Kumar Yadav
+          </a>
         </p>
       </footer>
+
     </div>
   );
 }
