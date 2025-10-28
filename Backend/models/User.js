@@ -20,6 +20,9 @@ const userSchema = new mongoose.Schema({
     minlength: 6,
     select: false
   },
+  username: {
+    type: String,
+},
   avatar: {
     type: String,
     default: 'https://ui-avatars.com/api/?background=0D8ABC&color=fff'

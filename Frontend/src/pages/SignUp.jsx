@@ -39,10 +39,17 @@ export default function SignUp() {
 
     setLoading(true);
     try {
+      // ✅ Auto-generate username to avoid backend duplicate key errors
+      const username =
+        formData.name.replace(/\s+/g, '').toLowerCase() +
+        '_' +
+        Math.floor(Math.random() * 10000);
+
       await signup({
         name: formData.name,
         email: formData.email,
         password: formData.password,
+        username, // ✅ send unique username
       });
       navigate('/home');
     } catch (error) {
@@ -58,7 +65,7 @@ export default function SignUp() {
 
         {/* Header */}
         <div className="text-center mb-8">
-          <h1 className="text-4xl font-bold  mb-3 bg-linear-to-r from-purple-400 to-cyan-300 bg-clip-text text-transparent">
+          <h1 className="text-4xl font-bold mb-3 bg-linear-to-r from-purple-400 to-cyan-300 bg-clip-text text-transparent">
             Create Your Account 🚀
           </h1>
           <p className="text-gray-400 text-sm sm:text-base">
@@ -68,7 +75,6 @@ export default function SignUp() {
 
         {/* Form */}
         <form onSubmit={handleSubmit} className="space-y-5">
-          {/* Error */}
           {(clientError || error) && (
             <div className="p-3 bg-red-500/10 border border-red-500/30 text-red-400 rounded-lg text-sm text-center">
               {clientError || error}
