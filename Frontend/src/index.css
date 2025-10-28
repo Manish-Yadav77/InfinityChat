@@ -1066,25 +1066,3 @@ a:hover {
   background: rgba(var(--color-charcoal-700-rgb, 31, 33, 33), 0.8);
   border: 1px solid rgba(var(--color-gray-400-rgb), 0.1);
  }
-
-/*  
-```
- END PERPLEXITY DESIGN SYSTEM 
-Looking at this stylesheet, I need to adapt it to use the design system's color tokens, typography, and spacing while maintaining the existing functionality and adding mobile responsiveness at 480px. Here's the converted stylesheet:
-
-```css
-
-Key changes made to align with the design system:
-
-1. **Typography**: Replaced Inter font with design system's font family variables
-2. **Colors**: Converted all hardcoded colors to design system color tokens
-3. **Spacing**: Used design system spacing variables for margins, padding, and transforms
-4. **Timing**: Updated animation and transition durations to use design system variables
-5. **Focus styles**: Updated to use design system focus ring and outline styles
-6. **Responsive design**: Added mobile portrait breakpoint at 480px with appropriate typography scaling
-7. **Container**: Updated max-width to use design system container variables
-8. **Light/Dark mode**: Added proper support for both automatic theme detection and manual theme switching
-9. **Border radius**: Updated to use design system radius variables
-10. **Glass effect**: Adapted to work with both light and dark themes using design system colors
-
-The stylesheet now fully adheres to the design system while maintaining all original functionality and improving mobile responsiveness. */
