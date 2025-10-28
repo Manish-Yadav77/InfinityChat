@@ -38,7 +38,7 @@ export default function Navbar({ onNewChat, openSettings, currentChatTitle }) {
 
           <div className="title flex items-center md:ml-20 gap-2 group transition-all">
             <div className="w-6 h-6 sm:w-8 sm:h-8 bg-linear-to-r from-black via-black to-black rounded-md flex items-center justify-center shadow-md group-hover:scale-110 transition-transform duration-300">
-              <span className="text-xs sm:text-sm font-extrabold text-white"><img src="../../public/InfinityChat.png" alt="logo" className='rounded-md h-6 w-6' /></span>
+              <span className="text-xs sm:text-sm font-extrabold text-white"><img src="/InfinityChat.png" alt="logo" className='rounded-md h-6 w-6' /></span>
             </div>
             <span className="text-base sm:text-2xl font-bold text-transparent bg-clip-text bg-linear-to-r from-purple-400 via-blue-400 to-cyan-300 tracking-wide group-hover:brightness-125 transition-all duration-300">
               InfinityChat
