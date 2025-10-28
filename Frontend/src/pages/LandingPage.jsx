@@ -11,7 +11,7 @@ export default function LandingPage() {
       <nav className="w-full fixed top-0 left-0 bg-slate-900/60 backdrop-blur-md border-b border-slate-800/60 z-50">
         <div className="max-w-7xl mx-auto flex justify-between items-center px-6 py-4">
           <div className="flex items-center gap-2">
-            <MessageCircle className="text-blue-500" size={28} />
+            <img src="../../public/InfinityChat.png" className="text-blue-500 h-8 w-9 bg-black rounded-full" alt="logo"/>
             <h1 className="text-xl sm:text-2xl font-bold bg-linear-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
               InfinityChat
             </h1>
