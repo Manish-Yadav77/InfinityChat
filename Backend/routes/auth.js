@@ -12,12 +12,9 @@ const generateToken = (id) => {
   });
 };
 
-// @route   POST /api/auth/signup
-// @desc    Register new user
-// @access  Public
 router.post('/signup', async (req, res) => {
   try {
-    const { name, email, password } = req.body;
+    const { name, email, password, username } = req.body;
 
     // Check if user exists
     const userExists = await User.findOne({ email });
@@ -33,6 +30,7 @@ router.post('/signup', async (req, res) => {
       name,
       email,
       password,
+      username,
       avatar: `https://ui-avatars.com/api/?name=${name}&background=random`
     });
 
@@ -44,6 +42,7 @@ router.post('/signup', async (req, res) => {
           name: user.name,
           email: user.email,
           avatar: user.avatar,
+          username: user.username,
           token: generateToken(user._id)
         }
       });
@@ -56,9 +55,6 @@ router.post('/signup', async (req, res) => {
   }
 });
 
-// @route   POST /api/auth/login
-// @desc    Authenticate user
-// @access  Public
 router.post('/login', async (req, res) => {
   try {
     const { email, password } = req.body;
@@ -90,6 +86,7 @@ router.post('/login', async (req, res) => {
         name: user.name,
         email: user.email,
         avatar: user.avatar,
+        username: user.username,
         token: generateToken(user._id)
       }
     });
@@ -101,9 +98,6 @@ router.post('/login', async (req, res) => {
   }
 });
 
-// @route   GET /api/auth/me
-// @desc    Get current user
-// @access  Private
 router.get('/me', protect, async (req, res) => {
   res.status(200).json({
     success: true,
@@ -111,6 +105,7 @@ router.get('/me', protect, async (req, res) => {
       _id: req.user._id,
       name: req.user.name,
       email: req.user.email,
+      username: req.user.username,
       avatar: req.user.avatar
     }
   });
