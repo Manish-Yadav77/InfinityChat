@@ -6,11 +6,11 @@ import { User, Mail, Lock, Loader } from 'lucide-react';
 export default function SignUp() {
   const navigate = useNavigate();
   const { signup, error } = useAuth();
-  const [formData, setFormData] = useState({ 
-    name: '', 
-    email: '', 
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
     password: '',
-    confirmPassword: ''
+    confirmPassword: '',
   });
   const [loading, setLoading] = useState(false);
   const [clientError, setClientError] = useState('');
@@ -18,7 +18,7 @@ export default function SignUp() {
   const handleChange = (e) => {
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     });
     setClientError('');
   };
@@ -27,7 +27,6 @@ export default function SignUp() {
     e.preventDefault();
     setClientError('');
 
-    // Validate
     if (formData.password !== formData.confirmPassword) {
       setClientError('Passwords do not match');
       return;
@@ -39,12 +38,11 @@ export default function SignUp() {
     }
 
     setLoading(true);
-
     try {
       await signup({
         name: formData.name,
         email: formData.email,
-        password: formData.password
+        password: formData.password,
       });
       navigate('/home');
     } catch (error) {
@@ -55,21 +53,24 @@ export default function SignUp() {
   };
 
   return (
-    <div className="min-h-screen bg-dark-bg flex items-center justify-center px-4">
-      <div className="w-full max-w-md">
-        
+    <div className="min-h-screen bg-gradient-to-b from-slate-950 via-slate-900 to-slate-950 flex items-center justify-center px-4 sm:px-6">
+      <div className="w-full max-w-md backdrop-blur-xl bg-slate-900/60 border border-slate-800 rounded-2xl p-8 shadow-[0_0_40px_-10px_rgba(139,92,246,0.4)] transition-all duration-300">
+
         {/* Header */}
         <div className="text-center mb-8">
-          <h1 className="text-3xl font-bold text-white mb-2">Create Account</h1>
-          <p className="text-gray-400">Join us to start chatting with AI</p>
+          <h1 className="text-4xl font-bold text-gray-100 mb-3 bg-gradient-to-r from-purple-400 to-cyan-300 bg-clip-text text-transparent">
+            Create Your Account 🚀
+          </h1>
+          <p className="text-gray-400 text-sm sm:text-base">
+            Join <span className="text-purple-400 font-semibold">InfinityChat</span> and explore AI-powered conversations.
+          </p>
         </div>
 
         {/* Form */}
-        <form onSubmit={handleSubmit} className="space-y-4">
-          
-          {/* Error Message */}
+        <form onSubmit={handleSubmit} className="space-y-5">
+          {/* Error */}
           {(clientError || error) && (
-            <div className="p-3 bg-red-500/20 border border-red-500 text-red-400 rounded-lg text-sm">
+            <div className="p-3 bg-red-500/10 border border-red-500/30 text-red-400 rounded-lg text-sm text-center">
               {clientError || error}
             </div>
           )}
@@ -86,8 +87,9 @@ export default function SignUp() {
                 onChange={handleChange}
                 required
                 placeholder="John Doe"
-                className="w-full pl-10 pr-4 py-2 bg-dark-secondary border border-dark-tertiary 
-                           rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-blue-500"
+                className="w-full pl-10 pr-4 py-2 bg-slate-800/70 border border-slate-700 
+                           rounded-lg text-white placeholder-gray-500 focus:outline-none 
+                           focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition-all"
               />
             </div>
           </div>
@@ -104,8 +106,9 @@ export default function SignUp() {
                 onChange={handleChange}
                 required
                 placeholder="you@example.com"
-                className="w-full pl-10 pr-4 py-2 bg-dark-secondary border border-dark-tertiary 
-                           rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-blue-500"
+                className="w-full pl-10 pr-4 py-2 bg-slate-800/70 border border-slate-700 
+                           rounded-lg text-white placeholder-gray-500 focus:outline-none 
+                           focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition-all"
               />
             </div>
           </div>
@@ -122,8 +125,9 @@ export default function SignUp() {
                 onChange={handleChange}
                 required
                 placeholder="••••••••"
-                className="w-full pl-10 pr-4 py-2 bg-dark-secondary border border-dark-tertiary 
-                           rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-blue-500"
+                className="w-full pl-10 pr-4 py-2 bg-slate-800/70 border border-slate-700 
+                           rounded-lg text-white placeholder-gray-500 focus:outline-none 
+                           focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition-all"
               />
             </div>
           </div>
@@ -140,18 +144,21 @@ export default function SignUp() {
                 onChange={handleChange}
                 required
                 placeholder="••••••••"
-                className="w-full pl-10 pr-4 py-2 bg-dark-secondary border border-dark-tertiary 
-                           rounded-lg text-white placeholder-gray-500 focus:outline-none focus:border-blue-500"
+                className="w-full pl-10 pr-4 py-2 bg-slate-800/70 border border-slate-700 
+                           rounded-lg text-white placeholder-gray-500 focus:outline-none 
+                           focus:border-purple-500 focus:ring-1 focus:ring-purple-500 transition-all"
               />
             </div>
           </div>
 
-          {/* Submit Button */}
+          {/* Button */}
           <button
             type="submit"
             disabled={loading}
-            className="w-full py-2 bg-blue-600 hover:bg-blue-700 disabled:bg-blue-600/50 
-                      text-white font-semibold rounded-lg transition flex items-center justify-center gap-2"
+            className="w-full py-2.5 bg-gradient-to-r from-purple-600 to-cyan-600 
+                      hover:from-purple-500 hover:to-cyan-500 disabled:opacity-60
+                      text-white font-semibold rounded-lg transition-all flex items-center 
+                      justify-center gap-2 shadow-[0_0_10px_rgba(139,92,246,0.4)] hover:shadow-[0_0_15px_rgba(139,92,246,0.6)]"
           >
             {loading && <Loader size={18} className="animate-spin" />}
             {loading ? 'Creating Account...' : 'Sign Up'}
@@ -159,11 +166,22 @@ export default function SignUp() {
         </form>
 
         {/* Login Link */}
-        <p className="text-center text-gray-400 mt-6">
+        <p className="text-center text-gray-400 mt-8 text-sm">
           Already have an account?{' '}
-          <Link to="/login" className="text-blue-500 hover:text-blue-400 font-medium">
-            Login
+          <Link
+            to="/login"
+            className="text-purple-400 hover:text-purple-300 font-medium transition-all"
+          >
+            Log in
           </Link>
+        </p>
+
+        {/* Footer */}
+        <p className="text-center text-gray-500 text-xs mt-6">
+          © {new Date().getFullYear()} InfinityChat · Created by{' '}
+          <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-cyan-300 font-semibold">
+            Manish Kumar Yadav
+          </span>
         </p>
       </div>
     </div>
