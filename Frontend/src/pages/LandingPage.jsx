@@ -1,93 +1,112 @@
-import React from 'react';
-import { useNavigate } from 'react-router-dom';
-import { MessageCircle, Zap, Shield, Code } from 'lucide-react';
+import React from "react";
+import { useNavigate } from "react-router-dom";
+import { MessageCircle, Zap, Shield, Code } from "lucide-react";
 
 export default function LandingPage() {
   const navigate = useNavigate();
 
   return (
-    <div className="min-h-screen bg-dark-bg text-white">
-      {/* Navigation */}
-      <nav className="flex justify-between items-center px-6 py-4 max-w-7xl mx-auto">
-        <h1 className="text-2xl font-bold flex items-center gap-2">
-          <MessageCircle className="text-blue-500" size={28} />
-          AI Chat
-        </h1>
-        <div className="space-x-4">
-          <button
-            onClick={() => navigate('/login')}
-            className="px-4 py-2 text-gray-400 hover:text-white transition"
-          >
-            Login
-          </button>
-          <button
-            onClick={() => navigate('/signup')}
-            className="px-6 py-2 bg-blue-600 hover:bg-blue-700 rounded-lg font-medium transition"
-          >
-            Sign Up
-          </button>
+    <div className="min-h-screen bg-linear-to-b from-slate-950 via-slate-900 to-slate-950 text-white flex flex-col">
+      {/* Navbar */}
+      <nav className="w-full fixed top-0 left-0 bg-slate-900/60 backdrop-blur-md border-b border-slate-800/60 z-50">
+        <div className="max-w-7xl mx-auto flex justify-between items-center px-6 py-4">
+          <div className="flex items-center gap-2">
+            <MessageCircle className="text-blue-500" size={28} />
+            <h1 className="text-xl sm:text-2xl font-bold bg-linear-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
+              InfinityChat
+            </h1>
+          </div>
+          <div className="hidden sm:flex items-center space-x-4">
+            <button
+              onClick={() => navigate("/login")}
+              className="px-4 py-2 text-gray-400 hover:text-white transition"
+            >
+              Login
+            </button>
+            <button
+              onClick={() => navigate("/signup")}
+              className="px-6 py-2 bg-linear-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 rounded-lg font-semibold transition"
+            >
+              Sign Up
+            </button>
+          </div>
+
+          {/* Mobile Menu */}
+          <div className="flex sm:hidden">
+            <button
+              onClick={() => navigate("/signup")}
+              className="px-4 py-2 bg-blue-600 hover:bg-blue-700 rounded-md font-medium transition"
+            >
+              Join
+            </button>
+          </div>
         </div>
       </nav>
 
       {/* Hero Section */}
-      <div className="max-w-7xl mx-auto px-6 py-20 text-center">
-        <h2 className="text-5xl md:text-6xl font-bold mb-6">
-          Your Personal AI Assistant
+      <section className="flex flex-col justify-center items-center text-center px-6 pt-32 sm:pt-40 pb-16 sm:pb-24">
+        <h2 className="text-4xl sm:text-6xl font-extrabold mb-6 leading-tight">
+          Your Free, <span className="text-blue-500">Unlimited</span> <br />
+          AI Chat Assistant
         </h2>
-        <p className="text-xl text-gray-400 mb-8 max-w-2xl mx-auto">
-          Chat with advanced AI models, get instant answers, and boost your productivity with our platform.
+        <p className="text-lg sm:text-xl text-gray-400 max-w-2xl mb-8">
+          Chat seamlessly with Google’s Gemini-powered AI — fast, private, and
+          completely free. Perfect for learning, coding, and productivity.
         </p>
         <button
-          onClick={() => navigate('/signup')}
-          className="px-8 py-4 bg-blue-600 hover:bg-blue-700 rounded-lg font-semibold text-lg transition"
+          onClick={() => navigate("/signup")}
+          className="px-8 py-4 bg-linear-to-r from-blue-600 to-cyan-600 hover:from-blue-700 hover:to-cyan-700 rounded-xl text-lg font-semibold shadow-lg shadow-blue-500/20 transition-all duration-300 hover:scale-105"
         >
-          Get Started Free
+          Get Started — It's Free 🚀
         </button>
-      </div>
+      </section>
 
-      {/* Features */}
-      <div className="max-w-7xl mx-auto px-6 py-20">
-        <div className="grid md:grid-cols-4 gap-8">
-          
-          <div className="text-center">
-            <div className="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center mx-auto mb-4">
-              <Zap size={24} />
+      {/* Features Section */}
+      <section className="max-w-7xl mx-auto px-6 py-20 grid gap-8 md:grid-cols-2 lg:grid-cols-4">
+        {[
+          {
+            icon: <Zap size={26} />,
+            title: "Lightning Fast",
+            desc: "Instant responses powered by cutting-edge AI models.",
+          },
+          {
+            icon: <Shield size={26} />,
+            title: "Private & Secure",
+            desc: "All conversations are encrypted and stored safely.",
+          },
+          {
+            icon: <Code size={26} />,
+            title: "Code Assistant",
+            desc: "Get help with debugging, code explanations, and snippets.",
+          },
+          {
+            icon: <MessageCircle size={26} />,
+            title: "Chat History",
+            desc: "Access, manage, and continue your past conversations anytime.",
+          },
+        ].map((feature, index) => (
+          <div
+            key={index}
+            className="bg-slate-900/60 border border-slate-800 rounded-2xl p-8 text-center hover:border-blue-500/40 hover:shadow-lg hover:shadow-blue-500/10 transition-all duration-300"
+          >
+            <div className="w-14 h-14 bg-linear-to-r from-blue-600 to-cyan-600 rounded-xl flex items-center justify-center mx-auto mb-4 text-white shadow-md shadow-blue-500/30">
+              {feature.icon}
             </div>
-            <h3 className="font-semibold mb-2">Lightning Fast</h3>
-            <p className="text-gray-400 text-sm">Get responses instantly powered by state-of-the-art AI</p>
+            <h3 className="font-semibold text-lg mb-2">{feature.title}</h3>
+            <p className="text-gray-400 text-sm leading-relaxed">
+              {feature.desc}
+            </p>
           </div>
-
-          <div className="text-center">
-            <div className="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center mx-auto mb-4">
-              <Shield size={24} />
-            </div>
-            <h3 className="font-semibold mb-2">100% Private</h3>
-            <p className="text-gray-400 text-sm">Your conversations are encrypted and secure</p>
-          </div>
-
-          <div className="text-center">
-            <div className="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center mx-auto mb-4">
-              <Code size={24} />
-            </div>
-            <h3 className="font-semibold mb-2">Code Expert</h3>
-            <p className="text-gray-400 text-sm">Perfect for programming help and technical questions</p>
-          </div>
-
-          <div className="text-center">
-            <div className="w-12 h-12 bg-blue-600 rounded-lg flex items-center justify-center mx-auto mb-4">
-              <MessageCircle size={24} />
-            </div>
-            <h3 className="font-semibold mb-2">Chat History</h3>
-            <p className="text-gray-400 text-sm">Save and access all your previous conversations</p>
-          </div>
-
-        </div>
-      </div>
+        ))}
+      </section>
 
       {/* Footer */}
-      <div className="border-t border-dark-tertiary mt-20 py-8 text-center text-gray-500">
-        <p>© 2025 AI Chat Clone. Built with ❤️ using React and AI.</p>
-      </div>
+      <footer className="mt-auto border-t border-slate-800 py-8 text-center text-gray-500 text-sm">
+        <p>
+          © {new Date().getFullYear()} InfinityChat — Built with 💙 using
+          React.js and Google AI Studio.
+        </p>
+      </footer>
     </div>
   );
 }
